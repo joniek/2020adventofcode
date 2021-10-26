@@ -1,6 +1,7 @@
 import os
 
-folderpath = '/Users/joankhoo/Documents/GitHub/2020adventofcode'
+# folderpath = '/Users/joankhoo/Documents/GitHub/2020adventofcode'
+folderpath = '/Users/socialgen/Documents/GitHub/2020adventofcode'
 filename = '2020-07-input.txt'
 
 
@@ -19,21 +20,42 @@ with open(os.path.join(folderpath,filename), 'r') as f:
             bags_dict[bag[0]] = temp_dict.copy()
 
 
+# Part 2: Find the number of bags a shiny gold bag can hold.
+# Wrong answers: 138 too low.
 
-#Part 1.
+target = ['shiny gold']
+newTarget = []
+parent_child_qty = []
+parents = set(['shiny gold'])
 
-target = 'shiny gold'
+
+def getChildren(parent):
+    return bags_dict.get(parent)
 
 
-def parent(target):
-    tempArray = []
-    for bag in bags_dict:
-        if target in bags_dict[bag]:
-            tempArray.append(bag)
-    return tempArray
-        
+print(getChildren(target[0]))
 
-outerbag = set()
-outerbag.update(parent(target))
-print(outerbag)
+
+
+
+# while len(target) > 0:
+
+#     for t in target:
+#         new_dict = bags_dict.get(t)
+#         print(t)
+#         print(new_dict)
+
+#         for n in new_dict:
+#             if new_dict[n] != 'no':
+#                 parent_child_qty.append([t,n,int(new_dict[n])])
+#                 newTarget.append(n)
+#                 parents.add(n)
+#             else:
+#                 parent_child_qty.append([t,n,1])
+
+#     target = newTarget
+#     newTarget = []
+#     print(len(target))
+
+    
 
